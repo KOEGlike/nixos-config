@@ -206,6 +206,8 @@
     firefox
   ];
 
+  environment.sessionVariables.PKG_CONFIG_PATH= "${pkgs.openssl.dev}/lib/pkgconfig";
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -222,6 +224,7 @@
   };
 
   environment.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
