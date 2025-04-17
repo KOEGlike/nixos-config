@@ -145,6 +145,8 @@
     #media-session.enable = true;
   };
 
+  services.printing.drivers =with pkgs; [ gutenprint gutenprintBin cnijfilter_4_00 ];
+
   # Enable remote desktop access via xrdp.
   services.xrdp.enable = true;
   services.xrdp.defaultWindowManager = "startplasma-x11";
@@ -204,7 +206,14 @@
     slack
     brave
     firefox
+    cnijfilter_4_00
+    libreoffice-qt
+    hunspell
+    hunspellDicts.hu_HU
+    config.boot.kernelPackages.xone
   ];
+
+  hardware.xone.enable = true;
 
   environment.sessionVariables.PKG_CONFIG_PATH= "${pkgs.openssl.dev}/lib/pkgconfig";
 
@@ -224,7 +233,6 @@
   };
 
   environment.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
