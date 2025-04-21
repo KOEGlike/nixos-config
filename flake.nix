@@ -7,15 +7,25 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager } @ inputs: {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+    }@inputs:
+    {
 
-    nixosConfigurations.koeg-station = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-      ];
-      specialArgs = { inherit self;inherit home-manager; inherit inputs; };
+      nixosConfigurations.koeg-station = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+        ];
+        specialArgs = {
+          inherit self;
+          inherit home-manager;
+          inherit inputs;
+        };
+      };
+
     };
-
-  };
 }

@@ -85,6 +85,13 @@
     '';
   };
 
+  powerManagement.enable = false;
+
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
+
   networking.hostName = "koeg-station"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -146,7 +153,11 @@
     #media-session.enable = true;
   };
 
-  services.printing.drivers =with pkgs; [ gutenprint gutenprintBin cnijfilter_4_00 ];
+  services.printing.drivers = with pkgs; [
+    gutenprint
+    gutenprintBin
+    cnijfilter_4_00
+  ];
 
   # Enable remote desktop access via xrdp.
   services.xrdp.enable = true;
@@ -189,14 +200,18 @@
     nixfmt-rfc-style
     home-manager
     git
+    gh
+    git-lfs
     rustup
     sqlx-cli
     cargo-leptos
+    leptosfmt
     dart-sass
     openssl
     openssl.dev
     pkg-config
     gcc
+    clang
     vscode
     dconf-editor
     discord
@@ -216,13 +231,24 @@
 
   hardware.xone.enable = true;
 
-  environment.sessionVariables.PKG_CONFIG_PATH= "${pkgs.openssl.dev}/lib/pkgconfig";
+  environment.sessionVariables.PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
 
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
+  systemd.user.services.steam = {
+    enable = true;
+    description = "Open Steam in the background at boot";
+    serviceConfig = {
+      ExecStart = "${pkgs.steam}/bin/steam -nochatui -nofriendsui -silent %U";
+      wantedBy = [ "graphical-session.target" ];
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
   };
 
   xdg.mime.defaultApplications = {
@@ -235,24 +261,24 @@
 
   environment.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
+      UseDns = true;
+      X11Forwarding = false;
+      PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
