@@ -9,34 +9,10 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./home-manager.nix
+    ./modules/gaming.nix
+    ./modules/coding.nix
+    ./modules/tools.nix
   ];
-
-  # Bootloader.
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-
-    systemd-boot = {
-      enable = true;
-
-      windows = {
-        "windows" =
-          let
-            # To determine the name of the windows boot drive, boot into edk2 first, then run
-            # `map -c` to get drive aliases, and try out running `FS1:`, then `ls EFI` to check
-            # which alias corresponds to which EFI partition.
-            boot-drive = "FS1";
-          in
-          {
-            title = "Windows";
-            efiDeviceHandle = boot-drive;
-            sortKey = "y_windows";
-          };
-      };
-
-      edk2-uefi-shell.enable = true;
-      edk2-uefi-shell.sortKey = "z_edk2";
-    };
-  };
 
   hardware.graphics = {
     enable = true;
@@ -47,37 +23,6 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-
-  hardware.nvidia = {
-
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
-    # of just the bare essentials.
-    powerManagement.enable = false;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of
-    # supported GPUs is at:
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-    # Only available from driver 515.43.04+
-    open = false;
-
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
 
   nix = {
     extraOptions = ''
@@ -135,8 +80,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  virtualisation.docker.enable = true;
-
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -192,32 +135,11 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
     nixfmt-rfc-style
     home-manager
-    git
-    gh
-    git-lfs
-    rustup
-    sqlx-cli
-    cargo-leptos
-    leptosfmt
-    dart-sass
-    openssl
-    openssl.dev
-    pkg-config
-    gcc
-    clang
-    vscode
-    dconf-editor
     discord
     spotify
-    temurin-bin-21
-    prismlauncher
     kitty
     slack
     brave
@@ -227,29 +149,12 @@
     hunspell
     hunspellDicts.hu_HU
     config.boot.kernelPackages.xone
+    sbctl
   ];
 
   hardware.xone.enable = true;
 
   environment.sessionVariables.PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
-
-  systemd.user.services.steam = {
-    enable = true;
-    description = "Open Steam in the background at boot";
-    serviceConfig = {
-      ExecStart = "${pkgs.steam}/bin/steam -nochatui -nofriendsui -silent %U";
-      wantedBy = [ "graphical-session.target" ];
-      Restart = "on-failure";
-      RestartSec = "5s";
-    };
-  };
 
   xdg.mime.defaultApplications = {
     "text/html" = "firefox.desktop";
