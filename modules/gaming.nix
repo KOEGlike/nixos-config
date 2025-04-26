@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 {
+  hardware.xone.enable = true;
 
   environment.systemPackages = with pkgs; [
     config.boot.kernelPackages.xone
