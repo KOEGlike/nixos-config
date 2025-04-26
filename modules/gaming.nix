@@ -2,6 +2,7 @@
 {
 
   environment.systemPackages = with pkgs; [
+    config.boot.kernelPackages.xone
     temurin-bin-21
     prismlauncher
     lutris

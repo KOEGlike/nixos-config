@@ -129,27 +129,14 @@
     wheelNeedsPassword = false;
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     nixfmt-rfc-style
     home-manager
-    discord
-    spotify
     kitty
-    slack
-    brave
-    firefox
     cnijfilter_4_00
-    libreoffice-qt
-    hunspell
-    hunspellDicts.hu_HU
-    config.boot.kernelPackages.xone
-    sbctl
   ];
 
   hardware.xone.enable = true;
