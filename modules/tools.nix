@@ -18,6 +18,7 @@
     davinci-resolve
     discord
     spotify
+    spotifyd
     slack
     brave
     firefox
