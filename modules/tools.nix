@@ -13,6 +13,8 @@
 
   environment.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
 
+  services.spotifyd.enable = true;
+
   environment.systemPackages = with pkgs; [
     qdirstat
     davinci-resolve
@@ -26,5 +28,6 @@
     hunspell
     hunspellDicts.hu_HU
     sbctl
+    kicad
   ];
 }
