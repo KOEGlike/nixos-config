@@ -135,7 +135,7 @@
   environment.systemPackages = with pkgs; [
     nixfmt-rfc-style
     home-manager
-    kitty
+    alacritty 
     cnijfilter_4_00
   ];
 
