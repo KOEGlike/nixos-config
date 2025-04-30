@@ -1,5 +1,6 @@
-{config, pkgs, ...}: {
+{config, pkgs,nvim-config, ...}: {
   virtualisation.docker.enable = true;
+
 
   environment.systemPackages = with pkgs; [
     temurin-bin-21

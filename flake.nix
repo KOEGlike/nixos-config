@@ -11,6 +11,17 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+
+    nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    nvim-config = {
+      # Use the actual path to your nvim-config project
+      url = "github:KOEGLike/nvim-config";
+      # Since it's a local path and likely shares inputs, prevent refetching
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixCats.follows = "nixCats"; # Make sure nixCats is also an input here or below
+    };
+    # Ensure nixCats is an input if your nvim-config depends on it
   };
 
   outputs =
@@ -19,6 +30,8 @@
       nixpkgs,
       home-manager,
       lanzaboote,
+      nixCats,
+      nvim-config,
     }@inputs:
     {
 
@@ -28,6 +41,9 @@
           ./configuration.nix
 
           lanzaboote.nixosModules.lanzaboote
+
+          nvim-config.nixosModules.default
+          nixCats.nixosModules.default
 
           ({ pkgs, lib, ... }: {
 
@@ -52,6 +68,7 @@
           inherit self;
           inherit home-manager;
           inherit inputs;
+          inherit nvim-config;
         };
       };
 
