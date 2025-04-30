@@ -169,19 +169,17 @@
     },
     "nvim-config": {
       "inputs": {
-        "nixCats": [
-          "nixCats"
-        ],
+        "nixCats": "nixCats",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1746034088,
-        "narHash": "sha256-TpoIYrmgyg+bHN2l6AuelGnUNxSd+1FAApNCxQKn3ks=",
+        "lastModified": 1746037031,
+        "narHash": "sha256-rdUDQacFxVS35NWvZxmgiMnCxBrtzHIAxph1q7KWsaQ=",
         "owner": "KOEGLike",
         "repo": "nvim-config",
-        "rev": "be7dd65c324de867207b8177b7baa604c4087f21",
+        "rev": "228d9022e8f7a9a3b326a8a56d672b57ed36ed30",
         "type": "github"
       },
       "original": {
@@ -221,7 +219,6 @@
       "inputs": {
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
-        "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
         "nvim-config": "nvim-config"
       }

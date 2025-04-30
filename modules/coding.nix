@@ -1,7 +1,13 @@
-{config, pkgs,nvim-config, ...}: {
+{
+  config,
+  pkgs,
+  nvim-config,
+  inputs,
+  ...
+}:
+{
+
   virtualisation.docker.enable = true;
-
-
   environment.systemPackages = with pkgs; [
     temurin-bin-21
     git
