@@ -26,5 +26,6 @@
     hunspellDicts.hu_HU
     sbctl
     kicad
+    tmux
   ];
 }
