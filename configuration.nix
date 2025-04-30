@@ -135,11 +135,22 @@
   environment.systemPackages = with pkgs; [
     nixfmt-rfc-style
     home-manager
-    alacritty 
+    alacritty
     cnijfilter_4_00
   ];
 
+  environment.sessionVariables.TERMINAL = "alacritty";
+
   environment.sessionVariables.PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+    extraConfig = ''
+      # used for less common options, intelligently combines if defined in multiple places.
+         ...
+    '';
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh = {

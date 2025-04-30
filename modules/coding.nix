@@ -26,4 +26,6 @@
     vscode
     nvim-config.packages.x86_64-linux.default
   ];
+
+  environment.sessionVariables.EDITOR="nvim";
 }
