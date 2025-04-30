@@ -26,6 +26,7 @@
       nixpkgs,
       home-manager,
       lanzaboote,
+      nvim-config,
       ...
     }@inputs:
     {
@@ -37,7 +38,6 @@
 
           lanzaboote.nixosModules.lanzaboote
 
-          inputs.nvim-config.nixosModules.default
           (
             { pkgs, lib, ... }:
             {
@@ -64,6 +64,7 @@
           inherit self;
           inherit home-manager;
           inherit inputs;
+          inherit nvim-config;
         };
       };
 
