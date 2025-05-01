@@ -137,6 +137,7 @@
     home-manager
     alacritty
     cnijfilter_4_00
+    nerdfonts
   ];
 
   environment.sessionVariables.TERMINAL = "alacritty";
