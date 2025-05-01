@@ -12,6 +12,7 @@
     ./modules/gaming.nix
     ./modules/coding.nix
     ./modules/tools.nix
+    ./modules/nerdfonts.nix
   ];
 
   hardware.graphics = {
@@ -137,7 +138,6 @@
     home-manager
     alacritty
     cnijfilter_4_00
-    nerdfonts
   ];
 
   environment.sessionVariables.TERMINAL = "alacritty";
