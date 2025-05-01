@@ -14,6 +14,9 @@
     gh
     git-lfs
     rustup
+    rust-analyzer
+    clippy
+    cargo
     sqlx-cli
     cargo-leptos
     leptosfmt
