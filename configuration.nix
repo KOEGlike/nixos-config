@@ -8,11 +8,10 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./home-manager.nix
+    ./home-manager/users.nix
     ./modules/gaming.nix
     ./modules/coding.nix
     ./modules/tools.nix
-    ./modules/nerdfonts.nix
   ];
 
   hardware.graphics = {
@@ -66,6 +65,10 @@
     LC_TELEPHONE = "ro_RO.UTF-8";
     LC_TIME = "ro_RO.UTF-8";
   };
+
+  fonts.packages =
+    [ ]
+    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   # Enable the KDE Desktop Environment.
   services.xserver.enable = true;

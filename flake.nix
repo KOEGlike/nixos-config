@@ -16,6 +16,11 @@
       url = "github:KOEGLike/nvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -25,6 +30,7 @@
       home-manager,
       lanzaboote,
       nvim-config,
+      plasma-manager,
       ...
     }@inputs:
     {
@@ -63,6 +69,7 @@
           inherit home-manager;
           inherit inputs;
           inherit nvim-config;
+          inherit plasma-manager;
         };
       };
 
