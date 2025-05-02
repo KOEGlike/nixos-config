@@ -3,19 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
-
-      # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nvim-config = {
-      # Use the actual path to your nvim-config project
       url = "github:KOEGLike/nvim-config";
-      # Since it's a local path and likely shares inputs, prevent refetching
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
