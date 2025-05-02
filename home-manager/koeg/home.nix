@@ -1,11 +1,12 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }:
 {
   imports = [
-    ./plasma.nix
+    (import ./plasma.nix { inherit config pkgs inputs; })
   ];
 
   home.username = "koeg";

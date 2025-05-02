@@ -1,7 +1,12 @@
-{ config, pkgs,plasma-manager, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
-    (import "${plasma-manager}/modules")
+    inputs.plasma-manager.homeManagerModules.plasma-manager
   ];
   programs.plasma = {
     enable = true;
