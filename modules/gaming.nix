@@ -18,10 +18,12 @@
 
   systemd.user.services.steam = {
     enable = true;
-    description = "Open Steam in the background at boot";
+    description = "Steam (no-GUI background startup)";
+    after = [ "network.target" ]; # wait for networking
+    wantedBy = [ "default.target" ]; # run when your session starts
     serviceConfig = {
-      ExecStart = "${pkgs.steam}/bin/steam -nochatui -nofriendsui -silent %U";
-      wantedBy = [ "graphical-session.target" ];
+      Type = "simple";
+      ExecStart = "${pkgs.steam}/bin/steam -nochatui -nofriendsui -silent";
       Restart = "on-failure";
       RestartSec = "5s";
     };

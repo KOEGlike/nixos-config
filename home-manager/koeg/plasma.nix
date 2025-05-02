@@ -13,7 +13,7 @@
     overrideConfig = true;
     workspace = {
       colorScheme = "BreezeDark";
-      wallpaper = "/home/koeg/Photos/vivasa-michael.jpg";
+      wallpaper = "/home/koeg/Pictures/moutain-1.jpg";
     };
     panels = [
       {
@@ -23,6 +23,7 @@
         floating = true;
         hiding = "autohide";
         lengthMode = "fit";
+        screen = 1;
         widgets = [
           "org.kde.plasma.kickoff"
           "org.kde.plasma.icontasks"
