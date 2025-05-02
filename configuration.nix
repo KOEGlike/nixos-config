@@ -147,7 +147,16 @@
   programs.tmux = {
     enable = true;
     clock24 = true;
-    extraConfig = '' '';
+    extraConfig = '''';
+  };
+
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      if command -v tmux &> /dev/null && [ -z "$TMUX"]; then 
+        tmux attach-session -t main || tmux new-session -s main
+      fi
+    '';
   };
 
   # Enable the OpenSSH daemon.
