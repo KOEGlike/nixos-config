@@ -10,6 +10,52 @@
   ];
   programs.plasma = {
     enable = true;
+    overrideConfig = true;
+    workspace = {
+      colorScheme = "BreezeDark";
+      wallpaper = "/home/koeg/Photos/vivasa-michael.jpg";
+    };
+    panels = [
+      {
+        location = "bottom";
+        alignment = "left";
+        opacity = "translucent";
+        floating = true;
+        hiding = "autohide";
+        lengthMode = "fit";
+        widgets = [
+          "org.kde.plasma.kickoff"
+          "org.kde.plasma.icontasks"
+          {
+            systemTray = {
+              items = {
+                # Do not show all items in the system tray
+                showAll = false;
+
+                shown = [
+                  # Volume / Audio devices
+                  "org.kde.plasma.volume"
+                  # Network manager
+                  "org.kde.plasma.networkmanagement"
+                  # Current keyboard layout
+                  "org.kde.plasma.keyboardlayout"
+                  "org.kde.plasma.mediacontroller"
+                ];
+
+                hidden = [
+                  # Printers
+                  "org.kde.plasma.printmanager"
+                  "org.kde.plasma.brightness"
+                  "org.kde.plasma.clipboard"
+                  "org.kde.plasma.battery"
+                ];
+              };
+            };
+          }
+          "org.kde.plasma.digitalclock"
+        ];
+      }
+    ];
     shortcuts = {
       "ActivityManager"."switch-to-activity-4c2f2f77-034e-453d-b095-c0c2efd41472" = [ ];
       "KDE Keyboard Layout Switcher"."Switch to Last-Used Keyboard Layout" = "Meta+Alt+L";

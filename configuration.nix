@@ -17,6 +17,7 @@
     ./modules/gaming.nix
     ./modules/coding.nix
     ./modules/tools.nix
+    ./modules/keyd.nix
   ];
 
   hardware.graphics = {
@@ -127,6 +128,7 @@
       "networkmanager"
       "wheel"
       "docker"
+      "keyd"
     ];
     packages = with pkgs; [
       #  thunderbird
