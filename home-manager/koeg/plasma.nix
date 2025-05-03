@@ -23,7 +23,7 @@
         floating = true;
         hiding = "autohide";
         lengthMode = "fit";
-        screen = 1;
+        screen = 0;
         widgets = [
           "org.kde.plasma.kickoff"
           "org.kde.plasma.icontasks"
