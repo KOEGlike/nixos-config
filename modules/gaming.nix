@@ -19,7 +19,7 @@
   systemd.user.services.steam = {
     enable = true;
     description = "Steam (no-GUI background startup)";
-    after = [ "network.target" ]; # wait for networking
+    after = [ "graphical-session.target" ]; # wait for networking
     wantedBy = [ "default.target" ]; # run when your session starts
     serviceConfig = {
       Type = "simple";
