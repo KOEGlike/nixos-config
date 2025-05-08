@@ -149,6 +149,7 @@
     alacritty
     cnijfilter_4_00
     wl-clipboard
+    pulseaudio
   ];
 
   environment.sessionVariables.TERMINAL = "alacritty";
