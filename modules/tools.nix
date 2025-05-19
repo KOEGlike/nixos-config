@@ -26,6 +26,7 @@
     hunspellDicts.hu_HU
     sbctl
     kicad
+    gimp3
   ];
 
   programs.obs-studio ={
