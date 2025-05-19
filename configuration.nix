@@ -150,6 +150,7 @@
     cnijfilter_4_00
     wl-clipboard
     pulseaudio
+    pulseaudio-module-xrdp
   ];
 
   environment.sessionVariables.TERMINAL = "alacritty";
