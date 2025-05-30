@@ -17,7 +17,6 @@
     qdirstat
     davinci-resolve
     discord
-    spotify
     slack
     brave
     firefox
@@ -25,8 +24,11 @@
     hunspell
     hunspellDicts.hu_HU
     sbctl
-    kicad
     gimp3
+    kikit
+    (kicad.override { addons = [ pkgs.kicadAddons.kikit pkgs.kicadAddons.kikit-library ]; })
+    kikit
+    spotify
   ];
 
   programs.obs-studio ={
