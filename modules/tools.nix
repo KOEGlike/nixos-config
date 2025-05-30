@@ -29,6 +29,7 @@
     (kicad.override { addons = [ pkgs.kicadAddons.kikit pkgs.kicadAddons.kikit-library ]; })
     kikit
     spotify
+    freecad
   ];
 
   programs.obs-studio ={
