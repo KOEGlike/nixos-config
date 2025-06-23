@@ -23,7 +23,6 @@
   hardware.graphics = {
     enable = true;
   };
-
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -142,6 +141,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.nvidia.acceptLicense = true;
 
   environment.systemPackages = with pkgs; [
     nixfmt-rfc-style

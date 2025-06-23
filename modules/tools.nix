@@ -30,6 +30,8 @@
     kikit
     spotify
     freecad
+    wakatime-cli
+(blender.override {cudaSupport=true;})
   ];
 
   programs.obs-studio ={
