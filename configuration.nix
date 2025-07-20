@@ -18,6 +18,7 @@
     ./modules/coding.nix
     ./modules/tools.nix
     ./modules/keyd.nix
+    ./modules/esp-idf.nix
   ];
 
   hardware.graphics = {
@@ -53,6 +54,7 @@
   networking.networkmanager.enable = true;
   networking.interfaces.enp6s0.wakeOnLan.enable = true;
 
+  programs.nix-ld.enable = true;
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
 

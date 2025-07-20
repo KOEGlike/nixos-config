@@ -28,7 +28,9 @@
     clang
     vscode
     nvim-config.packages.x86_64-linux.default
+    ldproxy
+    cargo-generate
   ];
 
-  environment.sessionVariables.EDITOR="nvim";
+  environment.sessionVariables.EDITOR = "nvim";
 }

@@ -26,20 +26,28 @@
     sbctl
     gimp3
     kikit
-    (kicad.override { addons = [ pkgs.kicadAddons.kikit pkgs.kicadAddons.kikit-library ]; })
+    (kicad.override {
+      addons = [
+        pkgs.kicadAddons.kikit
+        pkgs.kicadAddons.kikit-library
+      ];
+    })
     kikit
     spotify
     freecad
     wakatime-cli
-(blender.override {cudaSupport=true;})
+    (blender.override { cudaSupport = true; })
+    figma-linux
+    prusa-slicer
+    appimage-run
   ];
 
-  programs.obs-studio ={
+  programs.obs-studio = {
     enable = true;
-    plugins = with pkgs.obs-studio-plugins;[
+    plugins = with pkgs.obs-studio-plugins; [
       wlrobs
       obs-backgroundremoval
       obs-pipewire-audio-capture
-  ];
+    ];
   };
 }

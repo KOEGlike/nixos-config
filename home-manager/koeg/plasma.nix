@@ -15,7 +15,7 @@
       colorScheme = "BreezeDark";
       wallpaper = "/home/koeg/Pictures/moutain-1.jpg";
     };
-    desktop.mouseActions.middleClick=null;
+    desktop.mouseActions.middleClick = null;
     panels = [
       {
         location = "bottom";
@@ -58,6 +58,6 @@
         ];
       }
     ];
-     
+
   };
 }
