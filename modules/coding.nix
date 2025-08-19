@@ -31,6 +31,7 @@
     ldproxy
     cargo-generate
     postman
+    tailwindcss_4
   ];
 
   environment.sessionVariables.EDITOR = "nvim";

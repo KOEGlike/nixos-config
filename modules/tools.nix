@@ -40,6 +40,7 @@
     figma-linux
     prusa-slicer
     appimage-run
+    signal-desktop
   ];
 
   programs.obs-studio = {
