@@ -32,6 +32,7 @@
     cargo-generate
     postman
     tailwindcss_4
+    nil
   ];
 
   environment.sessionVariables.EDITOR = "nvim";
