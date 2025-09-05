@@ -23,7 +23,6 @@
     libreoffice-qt
     hunspell
     hunspellDicts.hu_HU
-    sbctl
     gimp3
     kikit
     (kicad.override {
