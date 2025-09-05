@@ -76,7 +76,7 @@
     { device = "/dev/disk/by-uuid/35e826a7-c69b-475b-8315-ceeaf6cd6577"; }
   ];
 
-    boot.loader.grub.device = "nodev"; # or "nodev" for efi only
+  boot.loader.grub.device = "nodev"; # or "nodev" for efi only
   boot.loader.grub.efiSupport = true;
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
