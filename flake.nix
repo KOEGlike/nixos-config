@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     nvim-config = {
       url = "github:KOEGLike/nvim-config";
@@ -28,7 +24,6 @@
       self,
       nixpkgs,
       home-manager,
-      lanzaboote,
       nvim-config,
       plasma-manager,
       ...
@@ -40,29 +35,8 @@
         modules = [
           ./configuration.nix
 
-          lanzaboote.nixosModules.lanzaboote
 
-          (
-            { pkgs, lib, ... }:
-            {
-
-              environment.systemPackages = [
-                # For debugging and troubleshooting Secure Boot.
-                pkgs.sbctl
-              ];
-
-              # Lanzaboote currently replaces the systemd-boot module.
-              # This setting is usually set to true in configuration.nix
-              # generated at installation time. So we force it to false
-              # for now.
-              boot.loader.systemd-boot.enable = lib.mkForce false;
-
-              boot.lanzaboote = {
-                enable = true;
-                pkiBundle = "/var/lib/sbctl";
-              };
-            }
-          )
+          
         ];
         specialArgs = {
           inherit self;
